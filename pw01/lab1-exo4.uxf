@@ -1,0 +1,31 @@
+<diagram program="umletino" version="15.1"><zoom_level>14</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>406</x><y>294</y><w>182</w><h>182</h></coordinates><panel_attributes>Logement
+--
+adresse
+numéro
+superficie
+loyer
+date de construction
+nombre de pièces</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>84</x><y>294</y><w>140</w><h>84</h></coordinates><panel_attributes>Commune
+--
+__npa__
+nom</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>322</y><w>224</w><h>70</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=*
+&lt; localisé à</panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>56</x><y>392</y><w>168</w><h>84</h></coordinates><panel_attributes>Type de logement
+--
+nom
+forfait</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>406</y><w>224</w><h>70</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+&lt; est de type</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>896</x><y>294</y><w>182</w><h>182</h></coordinates><panel_attributes>Locataire
+--
+nom
+prénom
+date de naissance
+numéro téléphone</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>574</x><y>322</y><w>350</w><h>70</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1..*
+est loué par &gt;</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>658</x><y>392</y><w>182</w><h>84</h></coordinates><panel_attributes>Location
+--
+actuelle
+nombre d'occupants</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>728</x><y>336</y><w>42</w><h>84</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element></diagram>

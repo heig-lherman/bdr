@@ -1,0 +1,55 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>190</x><y>240</y><w>140</w><h>110</h></coordinates><panel_attributes>Étudiant
+--
+__numéro d'étudiant__
+id national
+nom
+prénom[1..*]
+adresse</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>270</y><w>140</w><h>60</h></coordinates><panel_attributes>Unité d'enseignement
+--
+__code__
+titre</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>270</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1..8
+s'engage à suivre &gt;</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>750</x><y>240</y><w>140</w><h>110</h></coordinates><panel_attributes>Enseignant
+--
+__initiales__
+nom
+numéro de bureau
+numéro de téléphone</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>270</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=*
+responsable &gt;</panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>430</y><w>140</w><h>90</h></coordinates><panel_attributes>Épreuve
+--
+__id__
+date
+heure de début
+durée
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>320</y><w>110</w><h>130</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=3
+contrôlé par v</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>610</y><w>100</w><h>30</h></coordinates><panel_attributes>Contrôle continu
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>610</y><w>100</w><h>30</h></coordinates><panel_attributes>Examen
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>510</y><w>190</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-
+m1={complet, disjoint}\n:type</panel_attributes><additional_attributes>70;10;70;70;10;70;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>510</y><w>90</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70;70;70;70;100</additional_attributes></element><element><id>UMLNote</id><coordinates><x>190</x><y>550</y><w>260</w><h>50</h></coordinates><panel_attributes>CI: Une unité d'enseignement possède
+2 épreuve de type contrôle continu 
+et 1 de type examen.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>340</y><w>240</w><h>140</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=*
+cpos=5,-5
+effectue &gt;
+</panel_attributes><additional_attributes>10;10;10;110;220;110</additional_attributes></element><element><id>UMLNote</id><coordinates><x>190</x><y>490</y><w>260</w><h>50</h></coordinates><panel_attributes>CI: Il y a une évaluation par étudiant pour
+toutes les épreuves d'une UE 
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>750</x><y>580</y><w>140</w><h>60</h></coordinates><panel_attributes>Salle
+--
+__code__
+nb places
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>340</y><w>90</w><h>260</h></coordinates><panel_attributes>lt=-
+m1=1..*
+m2=1..*
+surveille v</panel_attributes><additional_attributes>10;10;10;240</additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>430</y><w>100</w><h>60</h></coordinates><panel_attributes>Surveillance
+--
+temps</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>440</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>430</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1..*
+m2=1
+surveillée par &gt;</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element></diagram>
