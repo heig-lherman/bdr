@@ -147,7 +147,8 @@ CREATE VIEW overdue_rentals_reminder AS
 SELECT
 	customer.email,
 	film.title,
-	EXTRACT(DAY FROM CURRENT_DATE - (rental_date + film.rental_duration * INTERVAL '1 day')) AS days_overdue
+	CEIL(EXTRACT(EPOCH FROM CURRENT_TIMESTAMP - (rental_date + film.rental_duration * INTERVAL '1 day'))
+		/ (24 * 60 * 60)) AS days_overdue
 FROM rental
 	JOIN customer
 		ON rental.customer_id = customer.customer_id
@@ -156,7 +157,7 @@ FROM rental
 	JOIN film
 		ON inventory.film_id = film.film_id
 WHERE rental.return_date IS NULL
-  AND CURRENT_DATE > rental_date + film.rental_duration * INTERVAL '1 day';
+  AND CURRENT_TIMESTAMP > rental_date + film.rental_duration * INTERVAL '1 day';
 -- CHECK
 SELECT *
 FROM overdue_rentals_reminder;
@@ -164,10 +165,7 @@ FROM overdue_rentals_reminder;
 
 -- BEGIN Exercice 06
 CREATE VIEW customers_with_overdue_rentals AS
-SELECT
-	email,
-	title,
-	days_overdue
+SELECT *
 FROM overdue_rentals_reminder
 WHERE days_overdue > 3;
 -- CHECK
@@ -281,8 +279,6 @@ WITH RECURSIVE actor_connections AS (
 	-- Initial query to get the actor_id of 'ED GUINESS'
 	SELECT
 		actor.actor_id,
-		actor.first_name,
-		actor.last_name,
 		0 AS distance
 	FROM actor
 	WHERE actor.first_name = 'ED'
@@ -293,27 +289,25 @@ WITH RECURSIVE actor_connections AS (
 	-- Recursive part of the query
 	SELECT
 		a.actor_id,
-		a.first_name,
-		a.last_name,
 		ac.distance + 1
 	FROM actor a
 		JOIN film_actor fa
 			ON a.actor_id = fa.actor_id
 		JOIN film
-			ON fa.film_id = film.film_id AND film.length < 50 -- Consider only short films
+			ON fa.film_id = film.film_id
 		JOIN actor_connections ac
 			ON film.film_id IN (
-			SELECT
-				film_id
-			FROM film_actor
-			WHERE actor_id = ac.actor_id
-		)
-	WHERE ac.distance < 3 -- Limit to actors within 3 films of distance
+				SELECT film_id
+				FROM film_actor
+				WHERE actor_id = ac.actor_id
+			)
+	WHERE film.length < 50 -- only consider short files
+	  AND ac.distance < 3 -- Limit to actors within 3 films of distance
 )
-SELECT DISTINCT
-	actor_id
+SELECT actor_id
 FROM actor_connections
-WHERE distance > 0;
+WHERE distance > 0
+GROUP BY actor_id;
 -- END Exercice 11
 
 -- BEGIN Exercice 12
